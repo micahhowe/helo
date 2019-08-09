@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import { logoutUser } from '../../ducks/reducer'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-export default class Nav extends Component {
+
+class Nav extends Component {
+    logout = () => {
+        axios.get('/auth/logout').then(() => {
+          this.props.logoutUser()
+          // This is what takes the user back to the dashboard upon logout
+          this.props.history.push('/')
+        })
+      }
   render() {
     return (
       <div className="Nav">
+          {this.props.username ? (
+          <>
+          <h3>Welcome, {this.props.username}</h3>
+          </>
+          ) : null}
     <Link to='/dashboard'>
         <button>Home</button>
     </Link>
@@ -12,10 +29,20 @@ export default class Nav extends Component {
         {/* This link will probably need to be dynamic but idk how that is supposed to work yet */}
         <button>New Post</button>
     </Link>
-    <Link to="/Auth">
-        <button>Logout</button>
+    <Link to="/">
+        <button onClick={this.logout}>Logout</button>
     </Link>
       </div>
     )
   }
 }
+
+function mapStateToProps(reduxState) {
+    const { username } = reduxState
+    return { username }
+  }
+
+export default connect(
+    mapStateToProps,
+    { logoutUser }
+  )(withRouter(Nav))

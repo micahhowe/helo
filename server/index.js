@@ -21,7 +21,7 @@ app.use(session({
 
   app.post('/auth/register', ctrl.register)
   app.post('/auth/login', ctrl.login)
-  app.delete('/auth/logout', ctrl.logout)
+  app.get('/auth/logout', ctrl.logout)
  
 
 massive(CONNECTION_STRING).then(dbInstance => {
