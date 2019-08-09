@@ -40,17 +40,18 @@ class Auth extends Component {
       this.props.history.push('/dashboard')
     })
     .catch(err => {
-      alert('Try again.')
+      alert('Sorry! Try again.')
     })
   }
   render() {
+      console.log(this.state)
     return (
       <div className="Auth">
         
         <div className="Login">
           <div className="inputs-container">
             <div className="Logo">
-            😉 Helo
+            ¯\_(ツ)_/¯ Helo
             </div>
             <input
               onChange={e => this.handleChange(e, 'usernameInput')}
