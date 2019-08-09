@@ -6,3 +6,12 @@ body {
   max-width: 1000px;
   margin: 0 auto;
 }
+.Nav {
+  display:flex;
+  justify-content: space-around;
+  margin: 10px 0 0 0;
+}
+button {
+  padding:10px;
+  border-radius:25px;
+}
