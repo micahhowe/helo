@@ -9,7 +9,7 @@ class Auth extends Component {
   state = {
     usernameInput: '',
     emailInput: '',
-    passwordInput: ''
+    passwordInput: '',
   }
   handleChange(e, key) {
     this.setState({
@@ -44,7 +44,7 @@ class Auth extends Component {
     })
   }
   render() {
-      console.log(this.state)
+      //console.log(this.state)
     return (
       <div className="Auth">
         
@@ -71,13 +71,17 @@ class Auth extends Component {
             <button onClick={this.registerUser}>Register</button>
             <button onClick={this.login}>Login</button>
           </div>
+          <div>
+          
+    </div>
         </div>
       </div>
     )
   }
 }
 
+
 export default connect(
-  null,
+    null,
   { setUser }
 )(Auth)

@@ -1,6 +1,17 @@
 const bcrypt = require('bcryptjs')
 
 module.exports = {
+    findUser: async(req,res) => {
+        const db = req.app.get('db')
+        const {userQuery} = req.params
+        const user = await db.find_email([email])
+        if (user == userQuery) {
+            return res.status(400).send({ message: 'User Exists' })
+          }
+          else{
+            return res.status(400).send({ message: 'User Does Not Exist' })  
+          }
+    },
   register: async (req, res) => {
     const db = req.app.get('db')
     const { email, password, username } = req.body

@@ -6,6 +6,11 @@ export default class Dashboard extends Component {
     return (
       <div className="Dashboard">
         Dashboard
+        <input type="text"/>
+        <button>Search</button>
+        <button>Reset</button>
+        <h3>My Posts</h3>
+        <input type="checkbox" />
       </div>
     )
   }
