@@ -2,8 +2,6 @@
 const initialState = {
     username: '',
     email: '',
-    accountBalance: 0,
-    transaction: []
   }
   
   // ACTION CONSTANTS

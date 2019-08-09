@@ -24,7 +24,7 @@ app.use(session({
   app.delete('/auth/logout', ctrl.logout)
  
 
-massive(CONNECTION_STRING).then(db => {
-  app.set('db', db)
+massive(CONNECTION_STRING).then(dbInstance => {
+  app.set('db', dbInstance)
   app.listen(SERVER_PORT, () => console.log(`YEAH! Running on ${SERVER_PORT}`))
 })
