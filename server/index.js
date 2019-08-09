@@ -6,6 +6,7 @@ const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const ctrl = require('./controller.js')
 
 
+
 const app = express()
 //Make sure that your middleware (app.use) is above the endpoints so they can run first
 app.use(express.json())
