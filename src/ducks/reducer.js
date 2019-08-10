@@ -2,8 +2,7 @@
 const initialState = {
     username: '',
     email: '',
-    id: 0,
-    myPostsToggle: true
+    id: 0
   }
   
   // ACTION CONSTANTS
