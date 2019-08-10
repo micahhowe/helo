@@ -10,7 +10,8 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Nav />
+        {/* This line stops nav from showing up on the login page (Auth) */}
+        {this.props.location.pathname === "/" ? null : <Nav />}
         {routes}
       </div>
     );

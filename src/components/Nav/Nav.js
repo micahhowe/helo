@@ -10,7 +10,6 @@ class Nav extends Component {
     logout = () => {
         axios.get('/auth/logout').then(() => {
           this.props.logoutUser()
-          req.session.destroy()
           // This is what takes the user back to the dashboard upon logout
           this.props.history.push('/')
         })

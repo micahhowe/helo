@@ -43,7 +43,7 @@ module.exports = {
     const db = req.app.get('db')
     const {email, password} = req.body
     req.session.username = req.body.username
-    const user = await db.find_email_and_hash([email])
+    const user = await db.find_email_and_match([email])
     if (user.length === 0) {
       return res.status(400).send({message: 'Email not found'})
     }
