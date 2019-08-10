@@ -15,10 +15,12 @@ class Nav extends Component {
         })
       }
   render() {
-    return (
+      console.log(this.props)
+      return (
       <div className="Nav">
           {this.props.username ? (
           <>
+          <img src={this.props.pic} alt="user profile pic"/>
           <h3>Welcome, {this.props.username}</h3>
           </>
           ) : null}
@@ -38,8 +40,8 @@ class Nav extends Component {
 }
 
 function mapStateToProps(reduxState) {
-    const { username } = reduxState
-    return { username }
+    const { username, pic } = reduxState
+    return { username, pic }
   }
 
 export default connect(

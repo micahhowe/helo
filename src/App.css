@@ -5,13 +5,33 @@ body {
 .App {
   max-width: 1000px;
   margin: 0 auto;
+  display:flex;
+  justify-content: center;
 }
 .Nav {
   display:flex;
+  flex:1;
+  flex-direction: column;
   justify-content: space-around;
-  margin: 10px 0 0 0;
+  margin: 0 0 0 0;
+  background:lightgray;
+  height:100vh;
+  width:10vw;
+}
+.Dashboard {
+  display:flex;
+  flex:4;
 }
 button {
   padding:10px;
   border-radius:25px;
+  height:40px;
+}
+input {
+  height:20px;
+}
+img{
+  max-height:30px;
+  max-width:30px;
+  border-radius:15px;
 }
