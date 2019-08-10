@@ -3,7 +3,6 @@ const initialState = {
     username: '',
     email: '',
     id: 0,
-    pic: 'http://i.imgur.com/AItCxSs.jpg',
     myPostsToggle: true
   }
   

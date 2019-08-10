@@ -20,7 +20,7 @@ class Nav extends Component {
       <div className="Nav">
           {this.props.username ? (
           <>
-          <img src={this.props.pic} alt="user profile pic"/>
+          <img src={`https://robohash.org/${this.props.username}`} alt="user profile pic"/>
           <h3>Welcome, {this.props.username}</h3>
           </>
           ) : null}
@@ -40,8 +40,8 @@ class Nav extends Component {
 }
 
 function mapStateToProps(reduxState) {
-    const { username, pic } = reduxState
-    return { username, pic }
+    const { username } = reduxState
+    return { username }
   }
 
 export default connect(

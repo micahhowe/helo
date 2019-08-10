@@ -20,12 +20,12 @@ class Auth extends Component {
     const {
       usernameInput: username,
       emailInput: email,
-      passwordInput: password
+      passwordInput: password,
     } = this.state
     axios
-      .post('/auth/register', { username, email, password })
+      .post('/auth/register', { username, email, password,})
       .then(res => {
-        this.props.setUser({ username, email })
+        this.props.setUser({ username, email})
         this.props.history.push('/dashboard')
       })
       .catch(err => {
