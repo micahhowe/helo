@@ -62,5 +62,17 @@ module.exports = {
     const db = req.app.get('db')
     const allPosts = await db.find_posts(`%${req.query.post_title}%`)
     return res.status(200).send(allPosts)
-    }
+    },
+    loadPosts: async (req, res) => {
+        const db = req.app.get("db");
+        const posts = await db.load_posts();
+        res.status(200).send(posts);
+    },
+    addPost: (req, res, next) => {
+        const db = req.app.get('db')
+        const { post_title, post_image, post_content } = req.body
+        db.create_post([post_title, post_image, post_content]).then(result => {
+            res.status(200).send(result)
+        })
+    },
 }

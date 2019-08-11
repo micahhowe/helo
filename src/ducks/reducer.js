@@ -2,7 +2,7 @@
 const initialState = {
     username: '',
     email: '',
-    id: 0
+    user_id: 0
   }
   
   // ACTION CONSTANTS
