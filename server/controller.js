@@ -57,5 +57,10 @@ module.exports = {
   logout: (req, res) => {
     req.session.destroy()
     res.status(200).send({message: 'Logged out', loggedIn: false})
-  }
+  },
+  findPosts: async (req, res) => {
+    const db = req.app.get('db')
+    const allPosts = await db.find_posts(`%${req.query.post_title}%`)
+    return res.status(200).send(allPosts)
+    }
 }

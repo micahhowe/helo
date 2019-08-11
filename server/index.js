@@ -23,6 +23,7 @@ app.use(session({
   app.post('/auth/login', ctrl.login)
   app.get('/auth/logout', ctrl.logout)
   app.get('/api/users/?userQuery', ctrl.findUser)
+  app.get('/api/posts', ctrl.findPosts)
  
 
 massive(CONNECTION_STRING).then(dbInstance => {

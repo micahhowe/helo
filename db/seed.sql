@@ -17,3 +17,11 @@ CREATE TABLE account(
     account_id SERIAL PRIMARY KEY,
     user_id INT REFERENCES user_info(user_id),
 );
+
+CREATE TABLE posts(
+  post_id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES user_info(user_id),
+  post_content VARCHAR,
+  post_image TEXT,
+  post_title VARCHAR(50)
+);

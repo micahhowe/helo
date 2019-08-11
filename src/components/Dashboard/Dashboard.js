@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 //import {Link} from 'react-router-dom'
 import Post from '../Post/Post.js'
+import axios from 'axios'
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -9,26 +10,36 @@ export default class Dashboard extends Component {
         this.state = {
             searchValue: '',
             PostsToggle: true,
-            postList: ['how', 'now', 'brown', 'cow']
+            postList: []
           }
         }
     handleChange(e) {
         this.setState({ searchValue: e.target.value })
     }
+    findPosts = () => {
+        axios.get(`/api/posts?post_title=${this.state.searchValue}`).then(postList =>
+            this.setState({
+                postList: postList.data
+            }))
+    }
+    // componentDidMount() {
+    //     this.findPosts()
+    // }
   render() {
-      console.log(this.state.searchValue)
     return (
       <div className="Dashboard">
         Dashboard
         <input onChange={e => this.handleChange(e)} type="text" placeholder="Search"/>
-        <button>Search</button>
+        <button onClick={this.findPosts}>Search</button>
         <button>Reset</button>
         <h3>My Posts</h3>
         <input type="checkbox" />
         <div className="postList">
                     {this.state.postList.map(el => (
                         <div className="individualPosts">
-                        <Post />    
+                        <Post 
+                        key={el.id}
+                        />    
                         </div>
                         ))}
                 </div>
