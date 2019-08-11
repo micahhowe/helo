@@ -9,12 +9,19 @@ export default class Dashboard extends Component {
             
         this.state = {
             searchValue: '',
-            PostsToggle: true,
+            postsToggle: true,
             postList: []
-          }
+          };
+          //I can't get the toggle checkbox to work correctly skipping for now
+          this.handleToggle = this.handleToggle.bind(this)
         }
     handleChange(e) {
         this.setState({ searchValue: e.target.value })
+    }
+    handleToggle(){
+        this.setState({
+            postsToggle: true ? false : true
+        })
     }
     findPosts = () => {
         axios.get(`/api/posts?post_title=${this.state.searchValue}`).then(postList =>
@@ -26,6 +33,7 @@ export default class Dashboard extends Component {
     //     this.findPosts()
     // }
   render() {
+      console.log(this.state.postsToggle)
     return (
       <div className="Dashboard">
         Dashboard
@@ -33,7 +41,7 @@ export default class Dashboard extends Component {
         <button onClick={this.findPosts}>Search</button>
         <button>Reset</button>
         <h3>My Posts</h3>
-        <input type="checkbox" />
+        <input type="checkbox" onClick={() => this.handleToggle} />
         <div className="postList">
                     {this.state.postList.map(el => (
                         <div className="individualPosts">
