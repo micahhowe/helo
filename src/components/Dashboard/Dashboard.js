@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import Post from '../Post/Post.js'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import { setUser } from '../../ducks/reducer'
+
 
 
 class Dashboard extends Component {
@@ -32,8 +34,14 @@ class Dashboard extends Component {
     }
     componentDidMount() {
         this.findPosts()
+        this.checkSession()
     }
+    checkSession(){
+        axios.get(`/api/auth/me`).then(res => 
+            this.props.setUser( res.data.user )
+            )}
   render() {
+
       console.log(this.state.postsToggle)
     return (
       <div className="Dashboard">
@@ -77,5 +85,5 @@ function mapStateToProps(reduxState) {
 
   export default connect(
     mapStateToProps,
-    // { findPosts }
+    {  setUser  }
   )(Dashboard)

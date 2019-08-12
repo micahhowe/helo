@@ -67,3 +67,11 @@ img{
 .Form > input {
   margin-bottom:10px;
 }
+.single-post{
+  display:flex;
+}
+.post-profile-pic{
+  max-height:30px;
+  max-width:30px;
+  border-radius:15px;
+}

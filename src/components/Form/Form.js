@@ -5,9 +5,9 @@ import axios from 'axios'
 
 class Form extends Component {
     state = {
-        title: '',
-        image: '',
-        content:''
+        post_title: '',
+        post_image: '',
+        post_content:''
     }
     handleChange(e, key) {
         this.setState({
@@ -16,8 +16,8 @@ class Form extends Component {
       }
       addPost = () => {
         const {user_id} = this.props
-        const {title, image, content} = this.state
-        axios.post('/api/posting', {user_id, title,image, content}).then(res => {
+        const {post_title, post_image, post_content} = this.state
+        axios.post('/api/posting', {user_id, post_title, post_image, post_content}).then(res => {
           //const {post_title,post_image,post_content} = res.data.post
           //this.props.addPost({post_title,post_image, post_content})
         })

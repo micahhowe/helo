@@ -2,7 +2,7 @@
 const initialState = {
     username: '',
     email: '',
-    user_id: 0,
+    // user_id: 0,
     post: ''
   }
   
