@@ -69,11 +69,14 @@ module.exports = {
         const posts = await db.load_posts();
         res.status(200).send(posts);
     },
-    addPost: (req, res, next) => {
+    addPost: async(req, res, next) => {
+        const { user_id, post_title, post_image, post_content } = req.body
         const db = req.app.get('db')
-        const { post_title, post_image, post_content } = req.body
-        db.create_post([post_title, post_image, post_content]).then(result => {
-            res.status(200).send(result)
+        const postToAdd = db.create_post({user_id, post_title, post_image, post_content}).then(result => {
+            res.status(200).send(postToAdd)
         })
+    },
+    sessionInfo: async (req, res) => {
+        return res.status(200).send({message: 'session info internalized', user: req.session.user, loggedIn: true})
     },
 }

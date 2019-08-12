@@ -15,10 +15,11 @@ class Form extends Component {
         })
       }
       addPost = () => {
-        const {title: post_title, image: post_image, content: post_content} = this.state
-        axios.post('/api/posting', {post_title,post_image, post_content}).then(res => {
-          const {post_title,post_image,post_content} = res.data.post
-          this.props.addPost({post_title,post_image, post_content})
+        const {user_id} = this.props
+        const {title, image, content} = this.state
+        axios.post('/api/posting', {user_id, title,image, content}).then(res => {
+          //const {post_title,post_image,post_content} = res.data.post
+          //this.props.addPost({post_title,post_image, post_content})
         })
         .catch(err => {
           alert('Sorry! Try Posting again.')
