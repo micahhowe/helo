@@ -15,7 +15,8 @@ module.exports = {
   register: async (req, res) => {
     const db = req.app.get('db')
     const { email, password, username } = req.body
-    req.session.username = req.body.username
+    req.session.userid = req.body.username
+    //? not sure if i did the line above correctly
     const user = await db.find_email([email])
     if (user.length > 0) {
       return res.status(400).send({ message: 'Email in use.' })
@@ -42,7 +43,7 @@ module.exports = {
   login: async (req, res) => {
     const db = req.app.get('db')
     const {email, password} = req.body
-    req.session.username = req.body.username
+    req.session.userid = req.body.username
     const user = await db.find_email_and_match([email])
     if (user.length === 0) {
       return res.status(400).send({message: 'Email not found'})

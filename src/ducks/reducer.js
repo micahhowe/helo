@@ -2,7 +2,8 @@
 const initialState = {
     username: '',
     email: '',
-    user_id: 0
+    user_id: 0,
+    post: ''
   }
   
   // ACTION CONSTANTS
@@ -24,7 +25,7 @@ const initialState = {
   }
   export function addPost(){
       return {
-        type: ADD_POST
+        type: ADD_POST,
       }
   }
   

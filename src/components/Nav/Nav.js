@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import { setUser } from '../../ducks/reducer'
 import { logoutUser } from '../../ducks/reducer'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -46,5 +47,5 @@ function mapStateToProps(reduxState) {
 
 export default connect(
     mapStateToProps,
-    { logoutUser }
+    { logoutUser, setUser }
   )(withRouter(Nav))

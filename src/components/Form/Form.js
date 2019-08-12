@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
@@ -17,15 +17,15 @@ class Form extends Component {
       addPost = () => {
         const {title: post_title, image: post_image, content: post_content} = this.state
         axios.post('/api/posting', {post_title,post_image, post_content}).then(res => {
-          const {post_title,post_image,post_content} = res.data.user
+          const {post_title,post_image,post_content} = res.data.post
           this.props.addPost({post_title,post_image, post_content})
-          this.props.history.push('/dashboard')
         })
         .catch(err => {
           alert('Sorry! Try Posting again.')
         })
       }
   render() {
+
     return (
       <div className="Form">
         
@@ -45,7 +45,9 @@ class Form extends Component {
         onChange={e => this.handleChange(e, 'content')}
         placeholder="content"
         />
+        <Link to="/dashboard">
         <button onClick={() => this.addPost}>Post</button>
+        </Link>
       </div>
     )
   }

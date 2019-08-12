@@ -14,13 +14,12 @@ class Dashboard extends Component {
             postsToggle: true,
             postList: []
           };
-          //I can't get the toggle checkbox to work correctly skipping for now
           this.handleToggle = this.handleToggle.bind(this)
         }
     handleChange(e) {
         this.setState({ searchValue: e.target.value })
     }
-    handleToggle(){
+    handleToggle = () => {
         this.setState({
             postsToggle: !this.state.postsToggle
         })
@@ -35,14 +34,14 @@ class Dashboard extends Component {
         this.findPosts()
     }
   render() {
-      //console.log(this.state.postsToggle)
+      console.log(this.state.postsToggle)
     return (
       <div className="Dashboard">
         <div className="dashboard-header"><input onChange={e => this.handleChange(e)} type="text" placeholder="Search"/>
         <button onClick={this.findPosts}>Search</button>
         <button>Reset</button>
         <h3>Hide My Posts</h3>
-        <input type="checkbox" onClick={() => this.handleToggle} /></div>
+        <input type="checkbox" onClick={this.handleToggle} /></div>
         <div className="postList">
                     {this.state.postsToggle === true ? (this.state.postList.map((el, i) => (
                         <div>
@@ -54,7 +53,7 @@ class Dashboard extends Component {
                         profile_pic={el.profile_pic}
                         />    
                         </div>
-                    ))): (this.state.postList.filter(el => ( el.user_id !== this.props.user_id)).map((el, i) => (
+                    ))): (this.state.postList.filter(el => ( el.username !== this.props.username)).map((el, i) => (
                         <div>
                         <Post
                         key={el.post_title}

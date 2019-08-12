@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 10
     }
@@ -22,6 +22,7 @@ app.use(session({
   app.post('/auth/register', ctrl.register)
   app.post('/auth/login', ctrl.login)
   app.get('/auth/logout', ctrl.logout)
+  //app.get('/api/auth/me', ctrl.sessionInfo)
   //app.get('/api/users/?userQuery', ctrl.findUser)
   app.get('/api/posts', ctrl.findPosts)
   //app.get('/api/posts', ctrl.loadPosts)
