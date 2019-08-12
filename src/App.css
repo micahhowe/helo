@@ -31,7 +31,39 @@ input {
   height:20px;
 }
 img{
+  max-height:100px;
+  max-width:100px;
+}
+
+.Nav > img{
   max-height:30px;
   max-width:30px;
   border-radius:15px;
+}
+.Dashboard{
+  display:flex;
+  flex-direction: column;
+}
+.dashboard-header{
+  display:flex;
+  flex-direction: column;
+  max-width:60%;
+  margin: 50px 0 0 50px;
+}
+.dashboard-header > button {
+  margin-top:10px;
+}
+.postList{
+  display:flex;
+  flex-direction: column;
+}
+.Form{
+  display:flex;
+  flex: 5;
+  flex-direction: column;
+  max-width:60%;
+  margin: 50px 0 0 50px;
+}
+.Form > input {
+  margin-bottom:10px;
 }

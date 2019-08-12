@@ -38,12 +38,11 @@ class Dashboard extends Component {
       //console.log(this.state.postsToggle)
     return (
       <div className="Dashboard">
-        Dashboard
-        <input onChange={e => this.handleChange(e)} type="text" placeholder="Search"/>
+        <div className="dashboard-header"><input onChange={e => this.handleChange(e)} type="text" placeholder="Search"/>
         <button onClick={this.findPosts}>Search</button>
         <button>Reset</button>
         <h3>Hide My Posts</h3>
-        <input type="checkbox" onClick={() => this.handleToggle} />
+        <input type="checkbox" onClick={() => this.handleToggle} /></div>
         <div className="postList">
                     {this.state.postsToggle === true ? (this.state.postList.map((el, i) => (
                         <div>

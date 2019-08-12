@@ -6,9 +6,19 @@ import React, { Component } from 'react'
 export default class Post extends Component {
   render() {
     return (
-      <div className="Post">
-        Post
-      </div>
+        <div className="Post">
+        <div className="single-post">
+            <div className="post-header">
+                <h4>
+                {this.props.title}
+                </h4>
+            <img className="post-profile-pic" src={`https://robohash.org/${this.props.username}`} alt='posters profile'/>
+            </div>
+            <div className="content">
+            <img className="post-image" src={this.props.image} alt='this post'/>
+        <span>{this.props.content}</span></div>
+    </div>
+    </div>
     )
   }
 }

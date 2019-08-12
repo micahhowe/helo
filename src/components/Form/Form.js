@@ -18,7 +18,7 @@ class Form extends Component {
         const {title: post_title, image: post_image, content: post_content} = this.state
         axios.post('/api/posting', {post_title,post_image, post_content}).then(res => {
           const {post_title,post_image,post_content} = res.data.user
-          //I think i need to change res.data.user idk about the line above ^^^^
+          this.props.addPost({post_title,post_image, post_content})
           this.props.history.push('/dashboard')
         })
         .catch(err => {
@@ -39,12 +39,13 @@ class Form extends Component {
         onChange={e => this.handleChange(e, 'image')}
         placeholder="image URL"
         />
+        <img src={this.state.image} alt='' />
         
         <input type="text" 
         onChange={e => this.handleChange(e, 'content')}
         placeholder="content"
         />
-        <button>Post</button>
+        <button onClick={() => this.addPost}>Post</button>
       </div>
     )
   }

@@ -27,7 +27,7 @@ class Nav extends Component {
     <Link to='/dashboard'>
         <button>Home</button>
     </Link>
-    <Link to="/post/1">
+    <Link to="/new">
         {/* This link will probably need to be dynamic but idk how that is supposed to work yet */}
         <button>New Post</button>
     </Link>
