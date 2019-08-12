@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import { setUser } from '../../ducks/reducer'
+
 
 class Form extends Component {
     state = {
-        post_title: '',
-        post_image: '',
-        post_content:''
+        title: '',
+        image: '',
+        content:''
     }
     handleChange(e, key) {
         this.setState({
@@ -15,9 +17,8 @@ class Form extends Component {
         })
       }
       addPost = () => {
-        const {user_id} = this.props
-        const {post_title, post_image, post_content} = this.state
-        axios.post('/api/posting', {user_id, post_title, post_image, post_content}).then(res => {
+        const {title: post_title, image: post_image, content: post_content} = this.state
+        axios.post('/api/posting', {post_title, post_image, post_content}).then(res => {
           //const {post_title,post_image,post_content} = res.data.post
           //this.props.addPost({post_title,post_image, post_content})
         })
@@ -25,6 +26,13 @@ class Form extends Component {
           alert('Sorry! Try Posting again.')
         })
       }
+      componentDidMount() {
+        this.checkSession()
+    }
+      checkSession(){
+        axios.get(`/api/auth/me`).then(res => 
+            this.props.setUser( res.data.user )
+        )}
   render() {
 
     return (
@@ -47,17 +55,18 @@ class Form extends Component {
         placeholder="content"
         />
         <Link to="/dashboard">
-        <button onClick={() => this.addPost}>Post</button>
+        <button onClick={() => this.addPost()}>Post</button>
         </Link>
       </div>
     )
   }
 }
 function mapStateToProps(reduxState) {
-    const { user_id, username } = reduxState
-    return { user_id, username}
+    const { user, username } = reduxState
+    return { user, username}
   }
 
   export default connect(
     mapStateToProps,
+    { setUser }
   )(Form)

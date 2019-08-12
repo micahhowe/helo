@@ -32,8 +32,14 @@ class Dashboard extends Component {
                 postList: postList.data
             }))
     }
+    loadPosts = () => {
+        axios.get(`/api/posts`).then(postList => 
+            this.setState({
+                postList: postList.data
+            }))
+    }
     componentDidMount() {
-        this.findPosts()
+        this.loadPosts()
         this.checkSession()
     }
     checkSession(){
@@ -42,7 +48,6 @@ class Dashboard extends Component {
             )}
   render() {
 
-      console.log(this.state.postsToggle)
     return (
       <div className="Dashboard">
         <div className="dashboard-header"><input onChange={e => this.handleChange(e)} type="text" placeholder="Search"/>
@@ -54,7 +59,7 @@ class Dashboard extends Component {
                     {this.state.postsToggle === true ? (this.state.postList.map((el, i) => (
                         <div>
                         <Post
-                        key={el.post_title}
+                        key={el.user_id}
                         title={el.post_title}
                         image={el.post_image}
                         content={el.post_content}
@@ -64,7 +69,7 @@ class Dashboard extends Component {
                     ))): (this.state.postList.filter(el => ( el.username !== this.props.username)).map((el, i) => (
                         <div>
                         <Post
-                        key={el.post_title}
+                        key={el.user_id}
                         title={el.post_title}
                         image={el.post_image}
                         content={el.post_content}

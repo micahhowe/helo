@@ -59,6 +59,11 @@ module.exports = {
     req.session.destroy()
     res.status(200).send({message: 'Logged out', loggedIn: false})
   },
+  loadPosts: async (req, res) => {
+    const db = req.app.get('db')
+    const loadPosts = await db.load_posts()
+    return res.status(200).send(loadPosts)
+  },
   findPosts: async (req, res) => {
     const db = req.app.get('db')
     const allPosts = await db.find_posts(`%${req.query.post_title}%`)
@@ -70,11 +75,12 @@ module.exports = {
         res.status(200).send(posts);
     },
     addPost: async(req, res, next) => {
-        const { user_id, post_title, post_image, post_content } = req.body
+        console.log(req.body)
+        const { post_title, post_image, post_content } = req.body
+        const {user_id} = req.session.user
         const db = req.app.get('db')
-        const postToAdd = db.create_post({user_id, post_title, post_image, post_content}).then(result => {
-            res.status(200).send(postToAdd)
-        })
+        const postToAdd = await db.create_post([user_id, post_title, post_image, post_content])
+        res.status(200).send(postToAdd)
     },
     sessionInfo: async (req, res) => {
         return res.status(200).send({message: 'session info internalized', user: req.session.user, loggedIn: true})
