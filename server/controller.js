@@ -72,7 +72,7 @@ module.exports = {
   loadPosts: async (req, res) => {
         const db = req.app.get("db");
          //const posts = await db.load_posts();
-         console.log(req.query)
+         //console.log(req.query)
         const posts = await db.find_posts(`%${req.query.post_title}%`)
         res.status(200).send(posts);
     },
