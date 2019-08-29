@@ -32,7 +32,7 @@ class Dashboard extends Component {
             }))
     }
     loadPosts = () => {
-        axios.get(`/api/posts`).then(postList => 
+        axios.get(`/api/posts?post_title=${this.state.searchValue}`).then(postList => 
             this.setState({
                 postList: postList.data
             }))
@@ -46,11 +46,11 @@ class Dashboard extends Component {
             this.props.setUser( res.data.user )
             )}
   render() {
-
+    //console.log(this.state.searchValue)
     return (
       <div className="Dashboard">
         <div className="dashboard-header"><input onChange={e => this.handleChange(e)} type="text" placeholder="Search"/>
-        <button onClick={this.findPosts}>Search</button>
+        <button onClick={this.loadPosts}>Search</button>
         <button>Reset</button>
         <h3>Hide My Posts</h3>
         <input type="checkbox" onClick={this.handleToggle} /></div>

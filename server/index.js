@@ -24,9 +24,9 @@ app.use(session({
   app.get('/auth/logout', ctrl.logout)
   app.get('/api/auth/me', ctrl.sessionInfo)
   //app.get('/api/users/?userQuery', ctrl.findUser)
-  //app.get('/api/posts', ctrl.findPosts)
   //If I comment out findPosts then the loadposts no longer works
   app.get('/api/posts', ctrl.loadPosts)
+  //app.get('/api/posts/?query', ctrl.findPosts)
   app.post('/api/posting', ctrl.addPost)
  
 
