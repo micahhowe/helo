@@ -48,7 +48,11 @@ class Form extends Component {
         onChange={e => this.handleChange(e, 'image')}
         placeholder="image URL"
         />
-        <img src={this.state.image} alt='' />
+        {this.state.image.length > 7 ? (
+            <>
+              <img style={{ maxHeight: 200 }} src={this.state.image} alt='' />
+            </>
+          ) : null}
         
         <input type="text" 
         onChange={e => this.handleChange(e, 'content')}

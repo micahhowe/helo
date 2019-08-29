@@ -69,12 +69,12 @@ module.exports = {
     const allPosts = await db.find_posts(`%${req.query.post_title}%`)
     return res.status(200).send(allPosts)
     },
-    loadPosts: async (req, res) => {
+  loadPosts: async (req, res) => {
         const db = req.app.get("db");
         const posts = await db.load_posts();
         res.status(200).send(posts);
     },
-    addPost: async(req, res, next) => {
+  addPost: async(req, res, next) => {
         console.log(req.body)
         const { post_title, post_image, post_content } = req.body
         const {user_id} = req.session.user

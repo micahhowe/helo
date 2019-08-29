@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { setUser } from '../../ducks/reducer'
 
 
-
 class Dashboard extends Component {
     constructor(props) {
         super(props)

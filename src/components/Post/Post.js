@@ -15,7 +15,12 @@ export default class Post extends Component {
             <img className="post-profile-pic" src={`https://robohash.org/${this.props.username}`} alt='posters profile'/>
             </div>
             <div className="content">
-            <img className="post-image" src={this.props.image} alt='this post'/>
+            {this.props.image.length > 7 ? (
+            <>
+              <img style={{ maxHeight: 200 }} src={this.props.image} alt='' />
+            </>
+          ) : null}
+            {/* <img className="post-image" src={this.props.image} alt='this post'/> */}
         <span>{this.props.content}</span></div>
     </div>
     </div>
